@@ -22,6 +22,10 @@ public class GameStateController : Singleton<GameStateController>
     }
     void Update()
     {
+#if UNITY_STANDALONE_WIN
+        if (Input.GetKey(KeyCode.Escape))
+            Application.Quit();
+#endif
         if (currentState == GameStates.InGame)
         {
             CheckForGameWin();
