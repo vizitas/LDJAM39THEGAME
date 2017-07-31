@@ -4,8 +4,8 @@ using UnityEngine;
 
 public class StatusBar : MonoBehaviour
 {
-    float originalXScale;
-    float originalYScale;
+    public float OriginalXScale;
+    public float OriginalYScale;
 
     float originalXPosition;
     float originalYPosition;
@@ -17,8 +17,8 @@ public class StatusBar : MonoBehaviour
     void Start()
     {
         initialized = true;
-        originalXScale = transform.localScale.x;
-        originalYScale = transform.localScale.y;
+        OriginalXScale = transform.localScale.x;
+        OriginalYScale = transform.localScale.y;
         originalYPosition = transform.localPosition.y;
         originalXPosition = transform.localPosition.x;
     }
@@ -30,14 +30,14 @@ public class StatusBar : MonoBehaviour
         if (IsXAxis)
         {
             //MMMMM smells like makaroni
-            transform.localScale = new Vector3(Mathf.Lerp(0, originalXScale, percent), transform.localScale.y, transform.localScale.z);
-            float ammountMoved = (originalXScale - Mathf.Lerp(0, originalXScale, percent)) / 2;
+            transform.localScale = new Vector3(Mathf.Lerp(0, OriginalXScale, percent), transform.localScale.y, transform.localScale.z);
+            float ammountMoved = (OriginalXScale - Mathf.Lerp(0, OriginalXScale, percent)) / 2;
             transform.localPosition = new Vector3(originalXPosition - ammountMoved, transform.localPosition.y, transform.localPosition.z);
         }
         else
         {
-            transform.localScale = new Vector3(transform.localScale.x, Mathf.Lerp(0, originalYScale, percent), transform.localScale.z);
-            float ammountMoved = (originalYScale - Mathf.Lerp(0, originalYScale, percent)) / 2;
+            transform.localScale = new Vector3(transform.localScale.x, Mathf.Lerp(0, OriginalYScale, percent), transform.localScale.z);
+            float ammountMoved = (OriginalYScale - Mathf.Lerp(0, OriginalYScale, percent)) / 2;
             transform.localPosition = new Vector3(transform.localPosition.x, originalYPosition - ammountMoved, transform.localPosition.z);
         }
     }

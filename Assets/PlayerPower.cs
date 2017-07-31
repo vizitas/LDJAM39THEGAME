@@ -25,6 +25,7 @@ public class PlayerPower : Singleton<PlayerPower>
         if (Time.time > lastDamage + damageCoolDown)
         {
             powerBarBlinker.enabled = false;
+            powerBar.SetStatus(power);
         }
     }
     void LetterDecay(LetterController letter)
@@ -35,7 +36,6 @@ public class PlayerPower : Singleton<PlayerPower>
     void Decay()
     {
         power -= decayAmmount;
-        powerBar.SetStatus(power);
     }
     public void InflictPowerDamage(float ammount)
     {
